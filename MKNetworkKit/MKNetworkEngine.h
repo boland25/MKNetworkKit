@@ -193,6 +193,15 @@
                         httpMethod:(NSString*) method;
 
 /*!
+ * @abstract Adds a header value to the custom headers dictionary
+ *
+ *  @discussion
+ *   If Custom Header already exists, this allows for the ability to add to the header if something needs to be added
+ *
+ */
+-(void) appendValueToCustomHeader:(NSString *)keyForHeader withHeaderValue:(NSString *)headerValue;
+
+/*!
  *  @abstract adds the custom default headers
  *  
  *  @discussion

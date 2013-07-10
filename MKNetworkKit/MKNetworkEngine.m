@@ -44,7 +44,7 @@
 
 @property (copy, nonatomic) NSString *hostName;
 @property (strong, nonatomic) Reachability *reachability;
-@property (copy, nonatomic) NSDictionary *customHeaders;
+@property (copy, nonatomic) NSMutableDictionary *customHeaders;
 @property (assign, nonatomic) Class customOperationSubclass;
 
 @property (nonatomic, strong) NSMutableDictionary *memoryCache;
@@ -404,8 +404,18 @@ static NSOperationQueue *_sharedNetworkQueue;
 }
 
 -(void) prepareHeaders:(MKNetworkOperation*) operation {
-  
+    NSLog(@"PREPARNG HEADERS");
   [operation addHeaders:self.customHeaders];
+}
+
+-(void) appendValueToCustomHeader:(NSString *)keyForHeader withHeaderValue:(NSString *)headerValue
+{
+    if(self.customHeaders){
+         [self.customHeaders setValue:headerValue forKey:keyForHeader];
+    }else{
+        self.customHeaders = [[NSMutableDictionary alloc] initWithDictionary:@{keyForHeader:headerValue}];
+    }
+   
 }
 
 -(NSData*) cachedDataForOperation:(MKNetworkOperation*) operation {
