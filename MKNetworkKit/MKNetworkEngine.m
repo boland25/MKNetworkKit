@@ -415,8 +415,8 @@ static NSOperationQueue *_sharedNetworkQueue;
     }else{
         self.customHeaders = [[NSMutableDictionary alloc] initWithDictionary:@{keyForHeader:headerValue}];
     }
-   
 }
+   
 
 -(NSData*) cachedDataForOperation:(MKNetworkOperation*) operation {
   
