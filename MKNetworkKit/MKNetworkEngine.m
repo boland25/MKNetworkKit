@@ -411,10 +411,9 @@ static NSOperationQueue *_sharedNetworkQueue;
 -(void) appendValueToCustomHeader:(NSString *)keyForHeader withHeaderValue:(NSString *)headerValue
 {
     if(self.customHeaders){
-            NSMutableDictionary *newHeadersDict = [self.customHeaders mutableCopy];
-            newHeadersDict[keyForHeader] = headerValue;
-            self.customHeaders = newHeadersDict;
-       
+            NSMutableDictionary *customHeadersCopy = [self.customHeaders mutableCopy];
+            customHeadersCopy[keyForHeader] = headerValue;
+            self.customHeaders = customHeadersCopy;
     }else{
         self.customHeaders = [[NSMutableDictionary alloc] initWithDictionary:@{keyForHeader:headerValue}];
     }
